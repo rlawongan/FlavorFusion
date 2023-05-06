@@ -1,6 +1,5 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import React, {useEffect} from 'react';
-import {Logo} from '../../assets/images';
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
@@ -10,7 +9,7 @@ const SplashScreen = ({navigation}) => {
   }, []);
   return (
     <View style={styles.container}>
-      <Image source={Logo} />
+      <Image source={require('../../assets/gifs/animated-logo1.gif')} />
     </View>
   );
 };
