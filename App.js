@@ -9,6 +9,8 @@ import {
   Onboarding,
   Search,
   Profile,
+  SignIn,
+  SignUp,
 } from './src/pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -70,6 +72,11 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
+          name="SignIn"
+          component={SignIn}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
           options={{headerShown: false}}
@@ -85,6 +92,11 @@ const App = () => {
         <Stack.Screen
           name="Detail"
           component={Detail}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
