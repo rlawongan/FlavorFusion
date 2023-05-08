@@ -9,6 +9,7 @@ import {
   Onboarding,
   Search,
   Profile,
+  ForgetPassword,
 } from './src/pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -85,6 +86,11 @@ const App = () => {
         <Stack.Screen
           name="Detail"
           component={Detail}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ForgetPassword"
+          component={ForgetPassword}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
