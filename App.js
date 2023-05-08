@@ -73,13 +73,18 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="SignIn"
-          component={SignIn}
+          name="SplashScreen"
+          component={SplashScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="SplashScreen"
-          component={SplashScreen}
+          name="OnboardingScreen"
+          component={OnboardingScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SignIn"
+          component={SignIn}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -90,13 +95,7 @@ const App = () => {
             tabBarVisible: route.name === 'Home',
           })}
         />
-        <Stack.Screen
-          name="Detail"
-          component={Detail}
-          name="OnboardingScreen"
-          component={OnboardingScreen}
-          options={{headerShown: false}}
-        />
+
         <Stack.Screen
           name="SignUp"
           component={SignUp}

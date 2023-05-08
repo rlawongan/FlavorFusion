@@ -33,7 +33,9 @@ const Profile = ({navigation}) => {
         />
         <Text style={styles.buttonText}>Favorite Food</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('SignIn')}>
         <Image
           source={require('../../assets/icons/icons8-logout-24.png')}
           style={styles.icon}
