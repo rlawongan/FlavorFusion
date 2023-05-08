@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+<<<<<<< HEAD
 import {
   Home,
   SplashScreen,
@@ -11,6 +12,9 @@ import {
   Profile,
 } from './src/pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+=======
+import { OnboardingScreen, SplashScreen } from './src/pages';
+>>>>>>> d4cb968 (FEAT: Onboarding Screen)
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -75,6 +79,7 @@ const App = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
+<<<<<<< HEAD
           name="Home"
           component={HomeTabs}
           options={({route}) => ({
@@ -85,6 +90,10 @@ const App = () => {
         <Stack.Screen
           name="Detail"
           component={Detail}
+=======
+          name="OnboardingScreen"
+          component={OnboardingScreen}
+>>>>>>> d4cb968 (FEAT: Onboarding Screen)
           options={{headerShown: false}}
         />
       </Stack.Navigator>
@@ -92,6 +101,7 @@ const App = () => {
   );
 };
 
+<<<<<<< HEAD
 export default App;
 
 const styles = StyleSheet.create({
@@ -100,3 +110,6 @@ const styles = StyleSheet.create({
     height: 30,
   },
 });
+=======
+export default App;
+>>>>>>> d4cb968 (FEAT: Onboarding Screen)
