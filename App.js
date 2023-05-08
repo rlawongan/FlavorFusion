@@ -6,7 +6,7 @@ import {
   Home,
   SplashScreen,
   Detail,
-  Onboarding,
+  OnboardingScreen,
   Search,
   Profile,
   SignIn,
@@ -92,6 +92,8 @@ const App = () => {
         <Stack.Screen
           name="Detail"
           component={Detail}
+          name="OnboardingScreen"
+          component={OnboardingScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
