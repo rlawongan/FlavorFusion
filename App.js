@@ -1,10 +1,69 @@
 import * as React from 'react';
+import {Image, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './src/pages/Home';
-import SplashScreen from './src/pages/SplashScreen';
+import {
+  Home,
+  SplashScreen,
+  Detail,
+  Onboarding,
+  Search,
+  Profile,
+} from './src/pages';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+
+const HomeTabs = () => {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: '#FE724C',
+        inactiveTintColor: '#D7D7D7',
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused, color, size}) => (
+            <Image
+              source={require('./src/assets/icons/icons8-home-page-30.png')}
+              style={(styles.home, {tintColor: focused ? '#FE724C' : color})}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused, color, size}) => (
+            <Image
+              source={require('./src/assets/icons/icon-search30.png')}
+              style={{tintColor: focused ? '#FE724C' : color}}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused, color, size}) => (
+            <Image
+              source={require('./src/assets/icons/icons8-account-30.png')}
+              style={{tintColor: focused ? '#FE724C' : color}}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 const App = () => {
   return (
@@ -17,7 +76,15 @@ const App = () => {
         />
         <Stack.Screen
           name="Home"
-          component={Home}
+          component={HomeTabs}
+          options={({route}) => ({
+            headerShown: false,
+            tabBarVisible: route.name === 'Home',
+          })}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={Detail}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
@@ -26,3 +93,10 @@ const App = () => {
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  home: {
+    width: 40,
+    height: 30,
+  },
+});
