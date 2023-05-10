@@ -6,13 +6,15 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Button, Filter, Gap, Header} from '../../components';
+import {Filter, Gap, Header} from '../../components';
 
 const Home = ({navigation}) => {
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const options = {
@@ -35,11 +37,25 @@ const Home = ({navigation}) => {
         // eslint-disable-next-line no-shadow
         const recipes = response.data.feed;
         setRecipes(recipes);
+        setLoading(false);
       })
       .catch(function (error) {
         console.error(error);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <View style={styles.spinnerContainer}>
+          <ActivityIndicator size="large" color="#FE724C" />
+          <Gap height={30} />
+          <Text style={styles.textLoading}>Loading...</Text>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -206,5 +222,21 @@ const styles = StyleSheet.create({
   detailButtonText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  spinnerContainer: {
+    backgroundColor: '#FFFFFF',
+    padding: 20,
+    borderRadius: 10,
+  },
+  textLoading: {
+    fontSize: 20,
+    fontFamily: 'Roboto-Medium',
+    color: '#FE724C',
   },
 });

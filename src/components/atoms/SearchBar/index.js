@@ -1,9 +1,15 @@
-import {StyleSheet, View, TextInput} from 'react-native';
+import {StyleSheet, View, TextInput, Image} from 'react-native';
 import React from 'react';
 
 const SearchBar = ({placeholder, placeholderTextColor}) => {
   return (
     <View style={styles.searchInputWrapper}>
+      <View style={styles.searchIconWrapper}>
+        <Image
+          source={require('../../../assets/icons/icon-search30.png')}
+          style={styles.searchIcon}
+        />
+      </View>
       <TextInput
         style={styles.searchInput}
         placeholder={placeholder}
@@ -20,6 +26,17 @@ const styles = StyleSheet.create({
     marginTop: 15,
     paddingHorizontal: 18,
   },
+  searchIconWrapper: {
+    position: 'absolute',
+    width: 32,
+    height: 32,
+    left: 30,
+    top: 12,
+  },
+  searchIcon: {
+    width: 24,
+    height: 24,
+  },
   searchInput: {
     borderWidth: 1,
     borderColor: '#9EADBA',
@@ -27,5 +44,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     fontSize: 16,
+    paddingLeft: 45,
   },
 });

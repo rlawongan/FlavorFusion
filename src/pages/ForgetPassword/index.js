@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
   description: {
     textAlign: 'center',
-    color: '#2727D2F',
+    color: '#272D2F',
     fontSize: 14,
   },
   label: {

@@ -42,7 +42,7 @@ const SignIn = ({navigation}) => {
         />
         <Gap height={12} />
         <TouchableOpacity>
-          <Text styles={styles.forget}>forget your password?</Text>
+          <Text>forget your password?</Text>
         </TouchableOpacity>
         <Gap height={29} />
         <Button label="Sign In" onPress={() => navigation.navigate('Home')} />
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontFamiliy: 'Roboto-Medium',
+    fontFamily: 'Roboto-Medium',
     textAlign: 'center',
     color: '#FE724C',
   },

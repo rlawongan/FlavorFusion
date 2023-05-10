@@ -26,7 +26,7 @@ const HomeTabs = () => {
         inactiveTintColor: '#D7D7D7',
       }}>
       <Tab.Screen
-        name="Home"
+        name="HomeTabs"
         component={Home}
         options={{
           headerShown: false,
@@ -91,7 +91,7 @@ const App = () => {
           name="Detail"
           component={Detail}
           options={{headerShown: false}}
-        />
+        />
         <Stack.Screen
           name="Home"
           component={HomeTabs}

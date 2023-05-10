@@ -15,20 +15,20 @@ const OnboardingScreen = ({navigation}) => {
       onDone={() => navigation.replace('SignIn')}
       pages={[
         {
-          backgroundColor: '#D7D7D7',
+          backgroundColor: '#EBEBEB',
           image: <Image source={require('../../assets/images/cook1.png')} />,
           title: 'Find Your Food',
           subtitle: 'Savour the flavour of find your favorite recipe',
         },
         {
-          backgroundColor: '#D7D7D7',
+          backgroundColor: '#EBEBEB',
           image: <Image source={require('../../assets/images/cook2.png')} />,
           title: 'Let`s Cook',
           subtitle:
             'Share moments, share prepare all the ingredients, and start cooking ',
         },
         {
-          backgroundColor: '#D7D7D7',
+          backgroundColor: '#EBEBEB',
           image: <Image source={require('../../assets/images/cook3.png')} />,
           title: 'Enjoy Your Food',
           subtitle:
