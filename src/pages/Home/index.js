@@ -91,7 +91,7 @@ const Home = ({navigation}) => {
                     </View>
                     <TouchableOpacity
                       style={styles.detailButton}
-                      onPress={() => navigation.navigate('Detail', {recipe})}>
+                      onPress={() => navigation.navigate('Detail')}>
                       <Text style={styles.detailButtonText}>See Detail</Text>
                     </TouchableOpacity>
                   </ImageBackground>

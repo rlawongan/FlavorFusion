@@ -95,7 +95,6 @@ const App = () => {
             tabBarVisible: route.name === 'Home',
           })}
         />
-
         <Stack.Screen
           name="SignUp"
           component={SignUp}
