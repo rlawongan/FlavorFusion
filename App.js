@@ -88,6 +88,11 @@ const App = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          name="Detail"
+          component={Detail}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Home"
           component={HomeTabs}
           options={({route}) => ({
