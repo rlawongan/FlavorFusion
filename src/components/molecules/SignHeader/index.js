@@ -6,9 +6,7 @@ const SignHeader = () => {
   return (
     <View>
       <View style={styles.headerContainer}>
-        <View style={styles.logoContainer}>
-          <Image source={Logo} style={styles.logo} />
-        </View>
+        <Image source={Logo} style={styles.logo} />
       </View>
     </View>
   );

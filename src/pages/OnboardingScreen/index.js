@@ -4,14 +4,13 @@ import React from 'react';
 import Onboarding from 'react-native-onboarding-swiper';
 import {Button} from '../../components';
 
-const OnboardingScreen = ({navigation}) => {
-  const handleOnPress = () => {
-    navigation.navigate('SignIn'); // Ganti 'SignIn' dengan nama screen SignIn Anda
-  };
+import LinearGradient from 'react-native-linear-gradient';
 
+const OnboardingScreen = ({navigation}) => {
   return (
     <Onboarding
       bottomBarHighlight
+      onSkip={() => navigation.navigate('SignIn')}
       onDone={() => navigation.replace('SignIn')}
       pages={[
         {
@@ -41,4 +40,11 @@ const OnboardingScreen = ({navigation}) => {
 
 export default OnboardingScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5,
+  },
+});

@@ -26,7 +26,7 @@ const Home = ({navigation}) => {
       },
       headers: {
         'content-type': 'application/octet-stream',
-        'X-RapidAPI-Key': 'd5754ca12amshe1b96e727bc37ccp1419e4jsn357a7c54784c',
+        'X-RapidAPI-Key': 'f7ed1b7413msh3724bab0d4636e9p1cade6jsnaf876b6a2428',
         'X-RapidAPI-Host': 'yummly2.p.rapidapi.com',
       },
     };
