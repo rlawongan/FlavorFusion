@@ -1,109 +1,115 @@
-import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Image,
-} from 'react-native';
-import {Gap} from '../../components';
+import React, {useState} from 'react';
+import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {Button, Gap, TextInput} from '../../components';
+import {iconBack, iconLock, iconEye, iconEyeSlash} from '../../assets';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 const ForgetPassword = ({navigation}) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
+  const [resetSuccess, setResetSuccess] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handelSignIn = () => {
+    const data = {
+      password1: password1,
+      password2: password2,
+    };
+    console.log(data);
+    setResetSuccess(true);
+  };
+
+  const toggleShowPassword1 = () => {
+    setShowPassword1(!showPassword1);
+  };
+  const toggleShowPassword2 = () => {
+    setShowPassword2(!showPassword2);
+  };
+  const showAlert = () => {
+    setResetSuccess(true);
+  };
+  const resetPassword = () => {
+    setPassword1('');
+    setPassword2('');
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack('Profile')}>
-        <Image source={require('../../assets/icons/icons8-less-than-32.png')} />
-        <Text style={styles.backButtonText}>Back to Profile</Text>
-      </TouchableOpacity>
-      <Text style={styles.title}>Change Your Password</Text>
+      <View style={styles.iconBackWrapper}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={iconBack} style={styles.iconBack} />
+        </TouchableOpacity>
+        <Text style={styles.backButtonText}>Back to Sign In</Text>
+      </View>
+      <Text style={styles.title}>Change your{'\n'}password</Text>
       <Text style={styles.description}>
-        Please change your password in order to be more secure
+        Please change your password in{'\n'}order to be more secure
       </Text>
-      <Gap height={20} />
+      <Gap height={30} />
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Old Password</Text>
-        <Gap height={10} />
-        <View style={styles.inputWrapper}>
+        <TextInput
+          label="Old Password"
+          placeHolder="your old password"
+          icon={iconLock}
+          value={password1}
+          secureTextEntry={!showPassword1}
+          onChangeText={e => setPassword1(e)}
+        />
+        <TouchableOpacity
+          onPress={toggleShowPassword1}
+          style={styles.showPasswordIcon1}>
           <Image
-            source={require('../../assets/icons/icons8-lock-24.png')}
-            style={styles.icon}
+            source={showPassword1 ? iconEye : iconEyeSlash}
+            style={styles.passwordIcon}
           />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your old password"
-            secureTextEntry={!showPassword}
-          />
-          <TouchableOpacity onPress={togglePasswordVisibility}>
-            <Image
-              source={require('../../assets/icons/icons8-eye-24.png')}
-              style={styles.eyeIcon}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>New Password</Text>
-        <Gap height={10} />
-        <View style={styles.inputWrapper}>
-          <Image
-            source={require('../../assets/icons/icons8-lock-24.png')}
-            style={styles.icon}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Enter yor new password"
-            secureTextEntry={!showPassword}
-          />
-          <TouchableOpacity onPress={togglePasswordVisibility}>
-            <Image
-              source={require('../../assets/icons/icons8-eye-24.png')}
-              style={styles.eyeIcon}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Confirm Password</Text>
-        <Gap height={10} />
-        <View style={styles.inputWrapper}>
-          <Image
-            source={require('../../assets/icons/icons8-lock-24.png')}
-            style={styles.icon}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your New password"
-            secureTextEntry={!showPassword}
-          />
-          <TouchableOpacity onPress={togglePasswordVisibility}>
-            <Image
-              source={require('../../assets/icons/icons8-eye-24.png')}
-              style={styles.eyeIcon}
-            />
-          </TouchableOpacity>
-        </View>
-        <Gap height={30} />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Change Password</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.resetButton}>
-          <Text style={styles.resetButtonText}>Reset Password</Text>
+        <Gap height={20} />
+        <TextInput
+          label="New Password"
+          placeHolder="your new password"
+          icon={iconLock}
+          value={password2}
+          secureTextEntry={!showPassword2}
+          onChangeText={e => setPassword2(e)}
+        />
+        <TouchableOpacity
+          onPress={toggleShowPassword2}
+          style={styles.showPasswordIcon2}>
+          <Image
+            source={showPassword2 ? iconEye : iconEyeSlash}
+            style={styles.passwordIcon}
+          />
         </TouchableOpacity>
+        <Gap height={20} />
+        <TextInput
+          label="Confirm Password"
+          placeHolder="your new password"
+          icon={iconLock}
+          value={password2}
+          secureTextEntry={!showPassword2}
+          onChangeText={e => setPassword2(e)}
+          editable={false}
+          selectTextOnFocus={false}
+        />
+        <Gap height={18} />
+        <Button label="Change Password" onPress={showAlert} />
+        <Gap height={10} />
+        <Button label="Reset Password" onPress={resetPassword} />
       </View>
+      <AwesomeAlert
+        show={resetSuccess}
+        showProgress={false}
+        title="Change Password Success"
+        message="Your password has been successfully change."
+        closeOnTouchOutside={true}
+        closeOnHardwareBackPress={false}
+        showCancelButton={false}
+        showConfirmButton={true}
+        confirmText="OK"
+        confirmButtonColor="#42f595"
+        onConfirmPressed={() => navigation.goBack()}
+      />
     </View>
   );
 };
@@ -112,46 +118,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
-    paddingTop: 50,
-  },
-  backButton: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginBottom: 20,
+    paddingTop: 60,
   },
   backButtonText: {
-    color: '#000',
-    textDecorationLine: 'underline',
-    marginTop: -3,
+    fontFamily: 'Roboto-Medium',
+    color: '#272D2F',
     marginLeft: 10,
-    fontSize: 25,
+    fontSize: 22,
+  },
+  iconBackWrapper: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    position: 'absolute',
+    top: 30,
+    left: 24,
   },
   title: {
+    fontFamily: 'Roboto-Medium',
     textAlign: 'center',
     fontSize: 32,
     color: '#FE724C',
     marginVertical: 30,
   },
   description: {
+    fontFamily: 'Roboto-Regular',
+    fontWeight: '400',
     textAlign: 'center',
     color: '#272D2F',
-    fontSize: 14,
+    fontSize: 16,
   },
   label: {
     color: '#FE724C',
     textAlign: 'left',
   },
   inputContainer: {
-    marginBottom: 20,
-  },
-  inputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    position: 'relative', // Tambahkan posisi relatif pada inputWrapper
+    paddingHorizontal: 24,
   },
   input: {
     flex: 1,
@@ -193,6 +194,25 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  iconBack: {
+    width: 32,
+    height: 32,
+  },
+  showPasswordIcon1: {
+    position: 'absolute',
+    top: 45,
+    right: 30,
+  },
+  showPasswordIcon2: {
+    position: 'absolute',
+    top: 155,
+    right: 30,
+  },
+  passwordIcon: {
+    width: 24,
+    height: 24,
+    tintColor: '#D7D7D7',
   },
 });
 

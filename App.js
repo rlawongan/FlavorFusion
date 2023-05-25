@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Swiper from 'react-native-swiper';
 import {
   Home,
   SplashScreen,

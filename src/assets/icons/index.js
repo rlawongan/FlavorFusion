@@ -8,6 +8,7 @@ import iconEyeSlash from './icons8-invisible-24.png';
 import iconEmail from './icon-email.png';
 import IconGoogle from './Google.png';
 import IconFacebook from './icons8-facebook-24.png';
+import iconBack from './icon-back.png';
 
 export {
   IconHome,
@@ -20,4 +21,5 @@ export {
   iconEmail,
   IconFacebook,
   IconGoogle,
+  iconBack,
 };
